@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS news(
+    id BIGSERIAL PRIMARY KEY NOT NULL,
+    title TEXT NOT NULL UNIQUE,
+    description TEXT NOT NULL,
+    published_date TIMESTAMP WITH TIME ZONE NOT NULL,
+    update_date TIMESTAMP WITH TIME ZONE,
+    image_url TEXT
+);

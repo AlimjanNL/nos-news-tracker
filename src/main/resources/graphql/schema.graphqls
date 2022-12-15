@@ -1,0 +1,14 @@
+type Query{
+    news:[News]
+    newsById(id:ID):News
+    newsByTitle(keyWord:String):[News]
+    newsByDescription(keyWord:String):[News]
+}
+
+type News{
+    id:ID!
+    title:String!
+    description:String
+    published_date:String
+    image_url:String
+}
