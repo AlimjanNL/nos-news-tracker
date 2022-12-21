@@ -6,7 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.xml.sax.SAXException;
 
+import javax.xml.xpath.XPathExpressionException;
+import java.io.IOException;
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
@@ -16,13 +19,8 @@ class FetchNewsServiceTest {
     FetchNewsServiceImpl fetchNewsServiceImpl;
 
     @Test
-    public void testFetchNews() {
-        List<News> newsList = null;
-        try {
-            newsList = fetchNewsServiceImpl.fetchNews(feedUrl);
-        } catch (Exception e) {
-            Assertions.fail(e.getMessage());
-        }
+    public void testFetchNews() throws XPathExpressionException, IOException, SAXException {
+        List<News> newsList = fetchNewsServiceImpl.fetchNews(feedUrl);
         Assertions.assertNotNull(newsList);
         Assertions.assertNotEquals(newsList.size(), 0);
     }

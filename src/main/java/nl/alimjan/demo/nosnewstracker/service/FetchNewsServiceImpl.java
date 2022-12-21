@@ -35,12 +35,13 @@ public class FetchNewsServiceImpl implements FetchNewsService {
     public FetchNewsServiceImpl() throws ParserConfigurationException {
         docFactory = DocumentBuilderFactory.newInstance();
         docBuilder = docFactory.newDocumentBuilder();
-        xPath = XPathFactory.newInstance().newXPath();
     }
 
     @Override
-    public List<News> fetchNews(String url) throws IOException, SAXException, XPathExpressionException, ParserConfigurationException {
+    public List<News> fetchNews(String url) throws IOException, SAXException, XPathExpressionException {
         Document doc = docBuilder.parse(new URL(url).openStream());
+
+        xPath = XPathFactory.newInstance().newXPath();
 
         String itemListPath = "/rss/channel/item";
 
